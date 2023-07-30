@@ -1,0 +1,61 @@
+/*
+파일명 : ex02-select-where.sql
+
+선택을 사용하여 행 제한
+    WHERE 절을 사용하여 반환되는 행을 제한합니다.
+
+WHERE
+    조건을 충족하는 행으로 quere를 제한합니다.
+    
+    세가지요소 
+    - 열이름
+    - 비교 조건
+    - 열 이름, 상수 똗는 값 리스트
+    
+*/
+
+-- WHERE 절 사용
+SELECT employee_id, last_name, job_id, department_id
+FROM employees
+WHERE department_id = 90;
+
+/*
+문자열 및 날짜
+    문자열 및 날짜 값은 작은 따옴표로 묶습니다.
+    문자 값은 대소문자를 구분하고 날짜 값은 형식을 구분합니다.
+    
+    기본 날짜 표시형식은 DD-MON-RR
+*/
+SELECT last_name, job_id, department_id
+FROM employees
+WHERE last_name = 'Whalen';
+
+SELECT last_name, hire_date
+FROM employees
+WHERE hire_date = '03/06/17';
+
+/*
+비교 연산자
+    특정 표현식을 다른값이나 표현식과 비교하는 조건에서 사용됩니다.
+    = 같음
+    > 보다 큼
+    >= 보다 크거나 같음
+    < 보다 작음
+    <= 보다 작거나 같음
+    <> 같지 않음
+    BETWEEN ... AND ... 두 값 사이(경계값 포함)
+    IN(set)             값 리스트 중 일치하는 값 검색
+    LIKE                일치하는 문자 패턴 검색
+    IS NULL             NULL 값인지 여부
+
+*/
+-- 비교 연산자 사용
+SELECT last_name, salary
+FROM employees
+WHERE salary <= 3000;
+
+
+
+
+
+
