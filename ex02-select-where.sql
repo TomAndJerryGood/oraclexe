@@ -54,6 +54,88 @@ SELECT last_name, salary
 FROM employees
 WHERE salary <= 3000;
 
+-- BETWEEN 연산자를 사용하는 범위 조건
+SELECT last_name, salary
+FROM employees
+WHERE salary BETWEEN 2500 AND 3500;
+-- 둘 다 동일함 
+SELECT last_name, salary
+FROM employees
+WHERE salary >= 2500 
+AND salary <= 3500;
+
+-- IN 연산자를 사용하는 멤버조건
+SELECT employee_id, last_name, salary, manager_id
+FROM employees
+WHERE manager_id IN (100, 101, 201);
+-- 위에것과 동일
+SELECT employee_id, last_name, salary, manager_id
+FROM employees
+WHERE manager_id = 100
+OR manager_id = 101
+OR manager_id = 201;
+
+/*
+LIKE 연산자를 사용하여 패턴 일치
+    LIKE 연산자를 사용하여 유효한 검색 문자열 값의 대체 문자 검색을 수행합니다.
+    검색 조건에는 리터럴 문자나 숫자가 포함될 수 있습니다.
+       - % : 0개 이상의 문자를 나타냅니다.
+       - _ : 한 문자를 나타냅니다.
+
+*/
+SELECT first_name
+FROM employees
+WHERE first_name LIKE 'A%'; -- A~사원만 나옴 
+
+SELECT first_name
+FROM employees
+WHERE first_name LIKE '%a%'; -- ~a~ 사원 나옴
+
+-- 대체 문자 결합
+SELECT last_name
+FROM employees
+WHERE last_name LIKE '_o%';  -- _o : o 앞에 한글자  
+
+-- ESCAPE 식별자
+SELECT employee_id, last_name, job_id
+FROM employees
+WHERE job_id LIKE '%SA\_%' ESCAPE '\';
+
+/*
+NULL 조건 사용
+    IS NULL 연산자로 NULL을 테스트 합니다
+*/
+SELECT last_name, manager_id
+FROM employees
+WHERE manager_id IS NULL;
+
+/*
+논리 연산자를 사용하여 조건정의
+    AND : 구성 요소 조건이 모두 참인 경우 TRUE 반환
+    OR : 구성 요소 조건 중 하나가 참인 경우 TRUE 반환
+    NOT : 조건이 거짓인 경우 TRUE를 반환
+    
+*/
+
+-- AND 연산자 사용
+SELECT employee_id, last_name, job_id, salary
+FROM employees
+WHERE salary >= 10000
+AND job_id LIKE '%MAN%';
+
+-- 144,000,000
+-- OR 연산자 사용
+SELECT employee_id, last_name, job_id, salary, 12000000*12 as test
+FROM employees
+WHERE salary >= 10000
+OR job_id LIKE '%MAN%';
+
+-- NOT 연산자 사용
+SELECT last_name, job_id
+FROM employees
+WHERE job_id NOT IN ('IT_PROG', 'ST_CLERK', 'SA_REF');
+
+
 
 
 
