@@ -93,3 +93,6 @@ GROUP BY department_id; -- 각부서의 평균값중에 제일 높은 부서
 
 
 
+
+
+
