@@ -104,3 +104,5 @@ AND emp.employee_id <> null
 AND emp.employee_id <> 100
 AND emp.employee_id <> 101
 AND emp.employee_id <> 103;
+
+
