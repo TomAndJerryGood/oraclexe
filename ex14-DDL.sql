@@ -144,7 +144,43 @@ CONSTRAINT emp_dept5_fk FOREIGN KEY(deptno)
     REFERENCES dept5(deptno) 
     );
     
+SELECT * FROM dept5;
+
+INSERT INTO dept5 (deptno, dname) VALUES(1, '개발부');
+INSERT INTO dept5 (deptno, dname) VALUES(2, '기획부');
+INSERT INTO dept5 (deptno, dname) VALUES(3, '디자인');
+
+COMMIT;
+
+SELECT * FROM emp; 
+INSERT INTO emp (empno, ename, deptno) VALUES(1, '안준호', 1);
+INSERT INTO emp (empno, ename, deptno) VALUES(2, '조석봉', 3);
+
+commit;
+
+-- empno가 2번인 사원을 지움
+DELETE FROM emp WHERE empno = 1;
+ROLLBACK;
+
+DELETE FROM dept5 WHERE deptno = 1;
+
+SELECT * FROM user_constraints
+WHERE constraint_name = 'EMP_DEPT5_FK';
+
+SELECT * FROM user_constraints
+WHERE table_name = 'EMP';
+
+
+-- 제약조건은 수정 불가능, 삭제만 가능합니다.
+ALTER TABLE emp DROP CONSTRAINT EMP_DEPT5_FK;
+
+-- 제약조건 추가하기
+ALTER TABLE emp ADD(
+CONSTRAINT emp_dept5_fk FOREIGN KEY(deptno) REFERENCES dept5(deptno)
+);
     
+SELECT * FROM user_constraints
+WHERE constraint_name = 'SYS_C008360';
 
 
 
