@@ -29,4 +29,4 @@ SELECT first_name, hire_date
 FROM employees
 WHERE hire_date > TO_DATE('2005-01-01', 'YYYY-MM-DD');
 
-DESC employees;
+DESC employees;.
